@@ -1,0 +1,50 @@
+<div class="gallery-container relative group/gallery w-full px-4">
+    @if (showNavigation && items.length > 3) {
+    <button (click)="scroll('left')" class="nav-btn left-[-20px]">
+        <ng-icon name="lucideChevronLeft" size="18"></ng-icon>
+    </button>
+    <button (click)="scroll('right')" class="nav-btn right-[-20px]">
+        <ng-icon name="lucideChevronRight" size="18"></ng-icon>
+    </button>
+    }
+
+    <div class="items-track flex gap-4 overflow-x-auto pb-6 pt-2 scrollbar-hide scroll-smooth" #scrollContainer
+        role="tablist" aria-label="Gallery Items">
+        @for (item of items; track item.id; let idx = $index) {
+        <button (click)="onSelect.emit(item)"
+            class="gallery-card relative shrink-0 transition-all duration-300 group opacity-100 visible overflow-hidden"
+            [class.selected]="activeId === item.id" [class.type-pattern]="item.type === 'pattern'"
+            [class.type-image]="item.type === 'image'" [class.type-gradient]="item.type === 'gradient'" role="tab"
+            [attr.aria-selected]="activeId === item.id" [attr.aria-label]="item.label"
+            [style.backgroundImage]="getBackgroundImage(item)">
+
+            <!-- Optimized Image for Type Image ONLY -->
+            @if (item.url && item.type === 'image') {
+            <img [ngSrc]="getRelativeUrl(item.url)" [alt]="item.label" fill
+                class="object-cover transition-transform duration-500 group-hover:scale-110" [priority]="idx < 3"
+                [loaderParams]="{ w: 400, q: 80 }">
+            }
+
+
+
+            <!-- Label Overlay -->
+            <div
+                class="absolute inset-x-0 bottom-0 p-3 z-30 transform group-hover:-translate-y-1 transition-transform duration-300">
+                <span class="text-[9px] font-black text-white uppercase tracking-wider block truncate drop-shadow-md">
+                    {{ item.label }}
+                </span>
+            </div>
+
+            <!-- Selection Indicator -->
+            @if (activeId === item.id) {
+            <div class="absolute top-2 right-2 z-40 animate-in zoom-in duration-300">
+                <div
+                    class="w-5 h-5 rounded-full bg-primary text-white shadow-lg flex items-center justify-center ring-2 ring-white/20">
+                    <ng-icon name="lucideCheckCircle2" size="12"></ng-icon>
+                </div>
+            </div>
+            }
+        </button>
+        }
+    </div>
+</div>

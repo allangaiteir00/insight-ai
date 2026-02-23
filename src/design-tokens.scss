@@ -1,0 +1,57 @@
+/*
+ * Design Tokens — Sistema Global de Temas
+ *
+ * Define estilos de base e tokens de design.
+ * As cores dinâmicas e o estado do tema são gerenciados pelo ThemeService.
+ */
+
+:root {
+    /* Superfície e bordas base (Fallbacks) */
+    --color-surface: #f8fafc;
+    --color-surface-card: #ffffff;
+    --color-surface-rgb: 248, 250, 252;
+    --color-border: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #64748b;
+    --color-text-muted: #94a3b8;
+    --radius: 12px;
+
+    /* Glassmorphism Tokens */
+    --glass-blur: 12px;
+    --glass-opacity: 0.7;
+    --glass-border-opacity: 0.1;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+@theme {
+    /* Mapeamento para utilidades do Tailwind */
+    --color-surface: var(--color-surface);
+    --color-surface-card: var(--color-surface-card);
+    --color-border: var(--color-border);
+    --color-text-primary: var(--color-text-primary);
+    --color-text-secondary: var(--color-text-secondary);
+    --color-text-muted: var(--color-text-muted);
+
+    /* Fontes */
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    /* Tema Dinâmico (Injetado via ThemeService) */
+    --color-primary: var(--color-primary);
+    --color-background-dynamic: var(--color-bg-dynamic);
+    /* Mapeado para o sistema de camadas */
+    --color-surface-dynamic: var(--color-surface);
+    --color-text-dynamic: var(--color-text);
+    --radius-dynamic: var(--radius);
+
+    /* Tons de Primária (Injetados via ThemeService) */
+    --color-primary-50: var(--color-primary-50);
+    --color-primary-100: var(--color-primary-100);
+    --color-primary-200: var(--color-primary-200);
+    --color-primary-300: var(--color-primary-300);
+    --color-primary-400: var(--color-primary-400);
+    --color-primary-500: var(--color-primary-500);
+    --color-primary-600: var(--color-primary-600);
+    --color-primary-700: var(--color-primary-700);
+    --color-primary-800: var(--color-primary-800);
+    --color-primary-900: var(--color-primary-900);
+}

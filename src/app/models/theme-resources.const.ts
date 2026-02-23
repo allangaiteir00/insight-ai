@@ -1,0 +1,91 @@
+import { GalleryItem } from '../features/theme/components/theme-gallery.component';
+
+export const IMAGE_RESOURCES: GalleryItem[] = [
+    { id: 'img-retro', type: 'image', label: 'Retro Grid', url: 'https://images.unsplash.com/photo-1555679427-1f6dfcce943b?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-fluid', type: 'image', label: 'Fluid Wave', url: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-cyber', type: 'image', label: 'Cyber Neon', url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-pastel', type: 'image', label: 'Soft Pastel', url: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-ocean', type: 'image', label: 'Deep Ocean', url: 'https://images.unsplash.com/photo-1504333638930-c8787321eee0?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-glassy', type: 'image', label: 'Glassy Light', url: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-mesh', type: 'image', label: 'Abstract Mesh', url: 'https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-void', type: 'image', label: 'Digital Void', url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-zen', type: 'image', label: 'Minimal Zen', url: 'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-arch', type: 'image', label: 'Modern Arch', url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-tech-1', type: 'image', label: 'Tech Nodes', url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-soft-1', type: 'image', label: 'Silk Flow', url: 'https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-geo-1', type: 'image', label: 'Prism Geometry', url: 'https://images.unsplash.com/photo-1506318137071-a8e063b4b519?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-minimal-1', type: 'image', label: 'Clean Studio', url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-abstract-1', type: 'image', label: 'Liquid Lava', url: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-space-1', type: 'image', label: 'Orbit Blue', url: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-glass-1', type: 'image', label: 'Refraction White', url: 'https://images.unsplash.com/photo-1528459840902-14eb5847cdcc?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-dark-1', type: 'image', label: 'Night Grid', url: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-nature-1', type: 'image', label: 'Eco Silicon', url: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=90&w=3840' },
+    { id: 'img-city-1', type: 'image', label: 'Cyber City', url: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=90&w=3840' }
+];
+
+export const PATTERN_RESOURCES: GalleryItem[] = [
+    { id: 'pat-topography', type: 'pattern', label: 'Topography', url: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%23ffffff' fill-opacity='0.4'/%3E%3C/svg%3E` },
+    { id: 'pat-waves', type: 'pattern', label: 'Floating Waves', url: `data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 C 20 40, 30 60, 50 50 S 80 60, 100 50' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3C/svg%3E` },
+    { id: 'pat-hexagons', type: 'pattern', label: 'Honeycomb', url: `data:image/svg+xml,%3Csvg width='28' height='49' viewBox='0 0 28 49' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5z' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E` },
+    { id: 'pat-diagonal', type: 'pattern', label: 'Modern Diagonal', url: `data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0h1v1L1 41H0v-1z' fill='%23ffffff' fill-opacity='0.15'/%3E%3C/svg%3E` },
+    { id: 'pat-squares', type: 'pattern', label: 'Abstract Squares', url: `data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3Crect x='20' y='20' width='20' height='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E` },
+    { id: 'pat-connect', type: 'pattern', label: 'Node Grid', url: `data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='1' fill='%23ffffff' fill-opacity='0.3'/%3E%3Cpath d='M5 5h40v40H5z' fill='none' stroke='%23ffffff' stroke-opacity='0.1'/%3E%3C/svg%3E` },
+    { id: 'pat-isometric', type: 'pattern', label: 'Isometric Tiles', url: `data:image/svg+xml,%3Csvg width='60' height='30' viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 15L30 30 0 15z' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E` },
+    { id: 'pat-circles', type: 'pattern', label: 'Floating Circles', url: `data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3Ccircle cx='90' cy='10' r='20' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.1'/%3E%3C/svg%3E` },
+    { id: 'pat-bamboo', type: 'pattern', label: 'Soft Lines', url: `data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 10 10, 20 0, 30 10' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3C/svg%3E` },
+    { id: 'pat-tech-grid', type: 'pattern', label: 'Microchip Grid', url: `data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm1 1h38v38H1V1zm19 19h2v2h-2v-2zm-10 0h2v2h-2v-2zm20 0h2v2h-2v-2z' fill='%23ffffff' fill-opacity='0.1'/%3E%3Cpath d='M10 10h1v1h-1v-1zm20 0h1v1h-1v-1zM10 30h1v1h-1v-1zm20 0h1v1h-1v-1z' fill='%23ffffff' fill-opacity='0.2'/%3E%3C/svg%3E` },
+    { id: 'pat-tech-data', type: 'pattern', label: 'Data Stream', url: `data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 2h2v10H2V2zm10 20h2v10h-2V22zm20-10h2v15h-2V12z' fill='%23ffffff' fill-opacity='0.15'/%3E%3C/svg%3E` },
+    { id: 'pat-elec-pulse', type: 'pattern', label: 'Pulse Wave', url: `data:image/svg+xml,%3Csvg width='100' height='40' viewBox='0 0 100 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 L20 20 L25 10 L30 30 L35 20 L100 20' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3C/svg%3E` },
+    { id: 'pat-elec-spark', type: 'pattern', label: 'Voltage Spark', url: `data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 10l5 20-15-10 20 5z' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3C/svg%3E` },
+    { id: 'pat-mod-bauhaus', type: 'pattern', label: 'Bauhaus Minimal', url: `data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='15' fill='%23ffffff' fill-opacity='0.05'/%3E%3Crect x='40' y='40' width='30' height='30' fill='%23ffffff' fill-opacity='0.05'/%3E%3Cpath d='M10 70l20-30 20 30z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E` },
+    { id: 'pat-mod-glass', type: 'pattern', label: 'Organic Glass', url: `data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30 C 50 10, 70 50, 90 30' stroke='%23ffffff' stroke-width='1' fill='none' opacity='0.1'/%3E%3Cpath d='M10 90 C 30 70, 50 110, 70 90' stroke='%23ffffff' stroke-width='1' fill='none' opacity='0.1'/%3E%3C/svg%3E` },
+    { id: 'pat-isometric', type: 'pattern', label: 'Isometric Tiles', url: `data:image/svg+xml,%3Csvg width='60' height='30' viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 15L30 30 0 15z' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E` },
+    { id: 'pat-waves', type: 'pattern', label: 'Floating Waves', url: `data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 C 20 40, 30 60, 50 50 S 80 60, 100 50' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3C/svg%3E` },
+    { id: 'pat-hexagons', type: 'pattern', label: 'Honeycomb', url: `data:image/svg+xml,%3Csvg width='28' height='49' viewBox='0 0 28 49' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5z' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.3'/%3E%3C/svg%3E` },
+    { id: 'pat-diagonal', type: 'pattern', label: 'Modern Diagonal', url: `data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0h1v1L1 41H0v-1z' fill='%23ffffff' fill-opacity='0.15'/%3E%3C/svg%3E` },
+    { id: 'pat-squares', type: 'pattern', label: 'Abstract Squares', url: `data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3Crect x='20' y='20' width='20' height='20' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E` },
+    { id: 'pat-connect', type: 'pattern', label: 'Node Grid', url: `data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='1' fill='%23ffffff' fill-opacity='0.3'/%3E%3Cpath d='M5 5h40v40H5z' fill='none' stroke='%23ffffff' stroke-opacity='0.1'/%3E%3C/svg%3E` },
+    { id: 'pat-isometric', type: 'pattern', label: 'Isometric Tiles', url: `data:image/svg+xml,%3Csvg width='60' height='30' viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 15L30 30 0 15z' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E` },
+    { id: 'pat-circles', type: 'pattern', label: 'Floating Circles', url: `data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3Ccircle cx='90' cy='10' r='20' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.1'/%3E%3C/svg%3E` },
+    { id: 'pat-bamboo', type: 'pattern', label: 'Soft Lines', url: `data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 C 10 10, 20 0, 30 10' stroke='%23ffffff' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3C/svg%3E` }
+
+];
+
+export const GRADIENT_RESOURCES: GalleryItem[] = [
+    { id: 'grad-void', type: 'gradient', label: 'Void', url: 'linear-gradient(135deg, #0f0c29 0%, #302b63 100%)' },
+    { id: 'grad-ocean', type: 'gradient', label: 'Deep Ocean', url: 'linear-gradient(135deg, #0a192f 0%, #0f3460 100%)' },
+    { id: 'grad-emerald', type: 'gradient', label: 'Emerald', url: 'linear-gradient(135deg, #0d2a2a 0%, #134e4a 100%)' },
+    { id: 'grad-eclipse', type: 'gradient', label: 'Eclipse', url: 'linear-gradient(135deg, #1a0900 0%, #78350f 100%)' },
+    { id: 'grad-royal', type: 'gradient', label: 'Royal', url: 'linear-gradient(135deg, #0f0f23 0%, #312e81 100%)' },
+    { id: 'grad-crimson', type: 'gradient', label: 'Crimson', url: 'linear-gradient(135deg, #0f0000 0%, #7f1d1d 100%)' },
+    { id: 'grad-6', type: 'gradient', label: 'Sunset Glow', url: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' },
+    { id: 'grad-7', type: 'gradient', label: 'Deep Ocean', url: 'linear-gradient(135deg, #2b5876 0%, #4e4376 100%)' },
+    { id: 'grad-hard-blue', type: 'gradient', label: 'Hard Edge Indigo', url: 'linear-gradient(135deg, #ffffff 50%, #4f46e5 50%)' },
+    { id: 'grad-hard-emerald', type: 'gradient', label: 'Slanted Emerald', url: 'linear-gradient(120deg, #f8fafc 40%, #10b981 40%)' },
+    { id: 'grad-aurora-1', type: 'gradient', label: 'Boreal Aurora', url: 'linear-gradient(45deg, #00dbde 0%, #fc00ff 100%)' },
+    { id: 'grad-mash-1', type: 'gradient', label: 'Fruit Mash', url: 'linear-gradient(135deg, #FF9B9B 0%, #FFD6A5 50%, #FFFEC4 100%)' },
+    { id: 'grad-cyber-1', type: 'gradient', label: 'Cyber Violet', url: 'linear-gradient(180deg, #2af598 0%, #009efd 100%)' },
+    { id: 'grad-smoke-1', type: 'gradient', label: 'Winter Smoke', url: 'linear-gradient(135deg, #e6e9f0 0%, #eef1f5 100%)' },
+    { id: 'grad-night-1', type: 'gradient', label: 'Deep Space', url: 'linear-gradient(to top, #09203f 0%, #537895 100%)' },
+    { id: 'grad-glass-mini', type: 'gradient', label: 'Soft Glass', url: 'linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%)' },
+    { id: 'grad-royal-1', type: 'gradient', label: 'Royal Gold', url: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
+    { id: 'grad-mocha', type: 'gradient', label: 'Mocha', url: 'linear-gradient(135deg, #1c1007 0%, #78350f 100%)' },
+    { id: 'grad-ice', type: 'gradient', label: 'Ice', url: 'linear-gradient(135deg, #0c2a4a 0%, #1e7da8 100%)' },
+    { id: 'grad-split-navy', type: 'gradient', label: 'Split Navy', url: 'linear-gradient(90deg, #0a192f 50%, #0d0d0d 50%)' },
+    { id: 'grad-split-iris', type: 'gradient', label: 'Split Iris', url: 'linear-gradient(90deg, #1e1b4b 50%, #0d0d0d 50%)' },
+    { id: 'grad-split-teal', type: 'gradient', label: 'Split Teal', url: 'linear-gradient(90deg, #0d1f1f 50%, #134e4a 50%)' },
+    { id: 'grad-white-blue', type: 'gradient', label: 'White Blue', url: 'linear-gradient(135deg, #ffffff 50%, #0000ff 50%)' },
+];
+
+export const PARTICLE_RESOURCES: GalleryItem[] = [
+    { id: 'minimal', type: 'particle', label: 'Plus Grid', icon: 'lucidePlus' },
+    { id: 'dots', type: 'particle', label: 'Starfield', icon: 'lucideCircleDot' },
+    { id: 'network', type: 'particle', label: 'Neural Net', icon: 'lucideSparkles' },
+    { id: 'tech', type: 'particle', label: 'OS Core', icon: 'lucideLayout' },
+    { id: 'tech2', type: 'particle', label: 'OS Matrix', icon: 'lucideCpu' },
+    { id: 'quantum', type: 'particle', label: 'Quantum Flow', icon: 'lucideWaves' },
+    { id: 'scanner', type: 'particle', label: 'Digital Scanner', icon: 'lucideTerminal' },
+    { id: 'bubbles', type: 'particle', label: 'Glass Bubbles', icon: 'lucideCircle' },
+    { id: 'snow', type: 'particle', label: 'Soft Snow', icon: 'lucideSnowflake' },
+    { id: 'fireworks', type: 'particle', label: 'Digital Spark', icon: 'lucideZap' }
+];

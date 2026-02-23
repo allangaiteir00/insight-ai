@@ -1,0 +1,210 @@
+<div class="theme-page-root">
+
+    <header class="toolbar">
+        <div class="dashboard-info">
+            <div class="header-icon">
+                <ng-icon name="lucidePalette" size="24"></ng-icon>
+            </div>
+            <div class="header-text">
+                <div class="title-row">
+                    <h2 class="dashboard-title">Aparência Platinum</h2>
+                    <span class="version-badge">Engine v5.0</span>
+                </div>
+                <p class="description">Orquestre a identidade visual do seu workspace inteligente.</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button (click)="save()" class="btn btn-primary" [disabled]="saving()">
+                @if (saving()) {
+                <div class="spinner"></div>
+                } @else {
+                <ng-icon [name]="saved() ? 'lucideCheckCircle2' : 'lucideSave'" size="18"></ng-icon>
+                <span>{{ saved() ? 'Sincronizado' : 'Salvar Alterações' }}</span>
+                }
+            </button>
+        </div>
+    </header>
+
+    <div class="layout-body">
+
+        <!-- Lado 1: Painel de Controle -->
+        <aside class="config-sidebar custom-scrollbar p-8 space-y-10">
+            <section>
+                <h3 class="section-label">Platinum Presets</h3>
+                <div class="presets-grid">
+                    @for (preset of presets; track preset.name) {
+                    <button (click)="applyPreset(preset)" class="preset-card"
+                        [class.active]="theme().name === preset.name">
+                        <div class="preset-dot" [style.color]="preset.config.primary"
+                            [style.background]="preset.config.primary"></div>
+                        <span>{{ preset.name }}</span>
+                    </button>
+                    }
+                </div>
+            </section>
+
+            <section class="controls-section">
+                <h3 class="section-label">Paleta de Base</h3>
+                <div class="color-grid">
+                    <div class="control-box">
+                        <label>Primária</label>
+                        <div class="picker group">
+                            <input type="color" [ngModel]="getValidHex(theme().primary)"
+                                (ngModelChange)="update('primary', $event)">
+                            <span>{{ theme().primary | uppercase }}</span>
+                        </div>
+                    </div>
+                    <div class="control-box">
+                        <label>Background</label>
+                        <div class="picker group">
+                            <input type="color" [ngModel]="getValidHex(theme().background)"
+                                (ngModelChange)="update('background', $event)">
+                            <span>{{ theme().background | uppercase }}</span>
+                        </div>
+                    </div>
+                    <div class="control-box">
+                        <label>Superfície</label>
+                        <div class="picker group">
+                            <input type="color" [ngModel]="getValidHex(theme().surface)"
+                                (ngModelChange)="update('surface', $event)">
+                            <span>{{ theme().surface | uppercase }}</span>
+                        </div>
+                    </div>
+                    <div class="control-box">
+                        <label>Cartões</label>
+                        <div class="picker group">
+                            <input type="color" [ngModel]="getValidHex(theme().surfaceCard)"
+                                (ngModelChange)="update('surfaceCard', $event)">
+                            <span>{{ theme().surfaceCard | uppercase }}</span>
+                        </div>
+                    </div>
+                    <div class="control-box">
+                        <label>Texto Primário</label>
+                        <div class="picker group">
+                            <input type="color" [ngModel]="getValidHex(theme().text)"
+                                (ngModelChange)="update('text', $event)">
+                            <span>{{ theme().text | uppercase }}</span>
+                        </div>
+                    </div>
+                    <div class="control-box">
+                        <label>Texto Secundário</label>
+                        <div class="picker group">
+                            <input type="color" [ngModel]="getValidHex(theme().textSecondary)"
+                                (ngModelChange)="update('textSecondary', $event)">
+                            <span>{{ theme().textSecondary | uppercase }}</span>
+                        </div>
+                    </div>
+                    <div class="control-box pt-4">
+                        <label>Tipografia</label>
+                        <select [ngModel]="theme().fontFamily" (ngModelChange)="update('fontFamily', $event)"
+                            class="select-modern">
+                            @for (f of fontGallery; track f.id) {
+                            <option [value]="f.id">{{ f.label }}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                @if (theme().backgroundType === 'gradient') {
+                <div class="gradient-custom-controls">
+                    <p class="gradient-hint">Custom Gradient</p>
+                    <div class="color-grid">
+                        <div class="control-box">
+                            <label>Início</label>
+                            <div class="picker group">
+                                <input type="color" [ngModel]="getValidHex(theme().gradientFrom)"
+                                    (ngModelChange)="update('gradientFrom', $event)">
+                                <span>{{ (theme().gradientFrom || '') | uppercase }}</span>
+                            </div>
+                        </div>
+                        <div class="control-box">
+                            <label>Fim</label>
+                            <div class="picker group">
+                                <input type="color" [ngModel]="getValidHex(theme().gradientTo)"
+                                    (ngModelChange)="update('gradientTo', $event)">
+                                <span>{{ (theme().gradientTo || '') | uppercase }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+                <div class="control-box">
+                    <div class="radius-header">
+                        <label>Curvatura UI</label>
+                        <div class="radius-badge">
+                            <span>{{ theme().radius }}px</span>
+                        </div>
+                    </div>
+                    <input type="range" min="0" max="24" [ngModel]="theme().radius"
+                        (ngModelChange)="update('radius', $event)" class="range-modern">
+                </div>
+            </section>
+
+            <section class="particles-section mini">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <ng-icon name="lucideSparkles" size="18" class="text-zinc-500"></ng-icon>
+                        <h4 class="text-[11px] font-black uppercase tracking-widest text-zinc-100">Partículas</h4>
+                    </div>
+                    <button (click)="update('showParticles', !theme().showParticles)" class="toggle-switch"
+                        [class.on]="theme().showParticles">
+                        <div class="handle"></div>
+                    </button>
+                </div>
+                @if (theme().showParticles) {
+                <div class="animate-in fade-in pt-4">
+                    <h4 class="section-label mini italic mb-4">Escolha o Estilo</h4>
+                    <div class="choice-grid">
+                        @for (p of particleGallery; track p.id) {
+                        <button (click)="update('particleStyle', p.id)" class="choice-box"
+                            [class.active]="theme().particleStyle === p.id">
+                            <div class="choice-indicator"></div>
+                            <span>{{ p.label }}</span>
+                        </button>
+                        }
+                    </div>
+                </div>
+                }
+            </section>
+        </aside>
+
+        <!-- Lado 2: Conteúdo de Galeria -->
+        <main class="gallery-content custom-scrollbar">
+            <article>
+                <div class="section-header-row">
+                    <h3 class="section-label italic">
+                        <ng-icon name="lucideImageIcon" size="14"></ng-icon> Galeria de Ambientes
+                    </h3>
+                    <span class="count-badge text-zinc-500">{{ imageGallery.length }} Itens</span>
+                </div>
+                <app-theme-gallery [items]="imageGallery" [activeId]="currentId('image')"
+                    (onSelect)="onSelect($event)"></app-theme-gallery>
+            </article>
+
+            <article>
+                <div class="section-header-row">
+                    <h3 class="section-label italic">
+                        <ng-icon name="lucideLayers" size="14"></ng-icon> Texturas de Superfície
+                    </h3>
+                    <span class="count-badge text-zinc-500">{{ patternGallery.length }} Itens</span>
+                </div>
+                <app-theme-gallery [items]="patternGallery" [activeId]="currentId('pattern')"
+                    (onSelect)="onSelect($event)"></app-theme-gallery>
+            </article>
+
+
+            <article>
+                <div class="section-header-row">
+                    <h3 class="section-label italic">
+                        <ng-icon name="lucideLayout" size="14"></ng-icon> Espectros de Cor
+                    </h3>
+                    <span class="count-badge text-zinc-500">{{ gradientGallery.length }} Itens</span>
+                </div>
+                <app-theme-gallery [items]="gradientGallery" [activeId]="currentId('gradient')"
+                    (onSelect)="onSelect($event)"></app-theme-gallery>
+            </article>
+        </main>
+    </div>
+</div>
