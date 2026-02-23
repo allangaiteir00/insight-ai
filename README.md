@@ -50,12 +50,15 @@ Desenvolvido por agentes especializados que garantem a integridade do código:
 
 ---
 
-## 🚀 Vision & Next Steps
+## 🚀 Vision & Roadmap
 
-1.  **Natural Language Dashboarding**: Geração de telas completas via prompts ("Crie um resumo de custos").
-2.  **Relacionamentos N-N**: Suporte nativo a conexões complexas na modelagem metadata-driven.
-3.  **Real-Time Collaboration**: Sincronização de workspaces via WebSockets.
-4.  **AI Insights Engine**: Detecção automática de anomalias nos dados via agentes analíticos.
+Para acompanhar o futuro do Insight AI, consulte nosso **[Roadmap Detalhado (docs/ROADMAP.md)](docs/ROADMAP.md)**.
+
+### Próximos Passos Priorizados:
+1.  **Natural Language Dashboarding**: Geração de telas completas via prompts.
+2.  **Relacionamentos N-N**: Suporte nativo a conexões complexas.
+3.  **Real-Time Collaboration**: Sincronização via WebSockets.
+4.  **AI Insights Engine**: Detecção automática de anomalias.
 
 ---
 
