@@ -1,8 +1,8 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { DashboardVersion } from '../../../core/models/dashboard.model';
-import { DashboardApiService } from '../../../core/services/dashboard-api.service';
+import { WorkspaceVersion } from '../../../core/models/workspace.model';
+import { WorkspaceApiService } from '../../../core/services/workspace-api.service';
 import { WorkspaceStore } from './workspace-store.service';
 
 describe('WorkspaceStore', () => {
@@ -12,7 +12,7 @@ describe('WorkspaceStore', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
-            providers: [WorkspaceStore, DashboardApiService]
+            providers: [WorkspaceStore, WorkspaceApiService]
         });
 
         store = TestBed.inject(WorkspaceStore);
@@ -33,7 +33,7 @@ describe('WorkspaceStore', () => {
     });
 
     it('should update widget position', () => {
-        const mockVersion: DashboardVersion = {
+        const mockVersion: WorkspaceVersion = {
             id: 'v1',
             dashboardId: 'd1',
             versionNumber: 1,
@@ -54,7 +54,7 @@ describe('WorkspaceStore', () => {
 
     it('should initialize local version when API is unavailable', async () => {
         // Quando o backend não está disponível, o store inicia em modo local sem propagar erro
-        const promise = store.loadDashboard('invalid-id');
+        const promise = store.loadWorkspace('invalid-id');
 
         const request = httpMock.expectOne('/api/dashboards/invalid-id/versions');
         request.error(new ErrorEvent('Network error'));
@@ -68,7 +68,7 @@ describe('WorkspaceStore', () => {
     });
 
     it('should add a widget to the active version', () => {
-        const mockVersion: DashboardVersion = {
+        const mockVersion: WorkspaceVersion = {
             id: 'v1', dashboardId: 'd1', versionNumber: 1, isActive: true,
             createdAt: '', filters: [], widgets: []
         };
@@ -81,7 +81,7 @@ describe('WorkspaceStore', () => {
     });
 
     it('should remove a widget by id', () => {
-        const mockVersion: DashboardVersion = {
+        const mockVersion: WorkspaceVersion = {
             id: 'v1', dashboardId: 'd1', versionNumber: 1, isActive: true,
             createdAt: '', filters: [],
             widgets: [

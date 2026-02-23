@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, output } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { WidgetType } from '../../../../core/models/dashboard.model';
+import { WidgetType } from '../../../../core/models/workspace.model';
 import { WIDGET_ICON_REGISTRY, WIDGET_METADATA, WidgetMeta } from '../../widget-metadata.constants';
 
 interface CategoryGroup {

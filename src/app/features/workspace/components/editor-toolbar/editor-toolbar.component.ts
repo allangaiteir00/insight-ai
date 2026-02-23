@@ -18,7 +18,7 @@ import { WorkspaceStore } from '../../services/workspace-store.service';
         </div>
         <div class="header-text">
           <div class="title-row">
-            <h2 class="dashboard-title">{{ store.dashboard()?.name || 'Workspace' }}</h2>
+            <h2 class="dashboard-title">{{ store.workspace()?.name || 'Workspace' }}</h2>
             <span class="version-badge">v{{ store.activeVersion()?.versionNumber || 1 }}</span>
           </div>
           <p class="description">Gerencie seus widgets e visualize seus dados.</p>

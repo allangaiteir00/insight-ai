@@ -4,13 +4,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCopy, lucidePencil, lucideTrash2 } from '@ng-icons/lucide';
 import { firstValueFrom, Subscription } from 'rxjs';
-import { Widget, WidgetState } from '../../../../core/models/dashboard.model';
+import { Widget, WidgetState } from '../../../../core/models/workspace.model';
 import { InteractionEvent } from '../../../../core/page-engine/models/interaction.model';
 import { EntityDataService } from '../../../../core/page-engine/services/entity-data.service';
 import { EntityRegistryService } from '../../../../core/page-engine/services/entity-registry.service';
 import { PageInteractionService } from '../../../../core/page-engine/services/page-interaction.service';
-import { DashboardApiService } from '../../../../core/services/dashboard-api.service';
 import { ThemeService } from '../../../../core/services/theme.service';
+import { WorkspaceApiService } from '../../../../core/services/workspace-api.service';
 import { ChartDisplayComponent } from '../../../../shared/widgets/charts/chart-display.component';
 import { WorkspaceStore } from '../../services/workspace-store.service';
 import { WIDGET_ICON_REGISTRY, WIDGET_META_MAP } from '../../widget-metadata.constants';
@@ -343,7 +343,7 @@ export class WidgetDisplayComponent {
   private readonly interactionService = inject(PageInteractionService);
   private filterSub?: Subscription;
 
-  private readonly api = inject(DashboardApiService);
+  private readonly api = inject(WorkspaceApiService);
   private readonly entityRegistry = inject(EntityRegistryService);
   private readonly dataService = inject(EntityDataService);
   protected readonly store = inject(WorkspaceStore);
@@ -388,13 +388,12 @@ export class WidgetDisplayComponent {
 
   protected computedState = computed<WidgetState>(() => {
     if (this.hasError()) return 'error';
-    if (!this.widget().config.dataUrl) return 'mock';
+    if (!this.widget().config.dataUrl && !this.widget().config.customSettings?.['entityId']) return 'mock';
     return 'normal';
   });
 
   constructor() {
     // Re-busca dados quando as configurações mudam
-    // Re-busca dados quando as configurações mudam (apenas se não for entidade reativa)
     effect(() => {
       const config = this.widget().config;
       const entityId = config.customSettings?.['entityId'];

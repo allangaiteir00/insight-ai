@@ -50,7 +50,7 @@ Estes widgets são "Vivos" e reagem à entidade selecionada:
 
 ## 🔄 Diagramas
 
-### Diagrama de Uso: Composição do Dashboard
+### Diagrama de Uso: Composição do Workspace
 Fluxo de criação e configuração de widgets.
 
 ```mermaid
@@ -86,7 +86,7 @@ graph TD
     end
 
     subgraph "Persistência"
-        F[Dashboard API]
+        F[Workspace API]
         A <--> F
     end
 ```

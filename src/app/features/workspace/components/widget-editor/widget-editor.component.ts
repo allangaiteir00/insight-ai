@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, output } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Widget, WidgetType } from '../../../../core/models/dashboard.model';
+import { Widget, WidgetType } from '../../../../core/models/workspace.model';
 import { EntityRegistryService } from '../../../../core/page-engine/services/entity-registry.service';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { ChartDisplayComponent } from '../../../../shared/widgets/charts/chart-display.component';
@@ -601,7 +601,7 @@ export class WidgetEditorComponent {
   }
 
   protected save(): void {
-    const formValue = this.form.value as WidgetFormValue;
+    const formValue = this.form.value as any;
     const existingWidget = this.widget();
 
     if (existingWidget) {

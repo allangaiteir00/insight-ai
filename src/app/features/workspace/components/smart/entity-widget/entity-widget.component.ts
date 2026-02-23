@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Widget } from '../../../../../core/models/dashboard.model';
+import { Widget } from '../../../../../core/models/workspace.model';
 import { EntityRegistryService } from '../../../../../core/page-engine/services/entity-registry.service';
 import { PageInteractionService } from '../../../../../core/page-engine/services/page-interaction.service';
 import { CalendarWidgetComponent } from '../../../../../shared/widgets/calendar/calendar-widget.component';
