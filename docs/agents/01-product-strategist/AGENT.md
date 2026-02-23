@@ -40,6 +40,7 @@ Item N:
 - Não defina arquitetura técnica ou padrões Angular.
 - Não tome decisões de UI/UX.
 - Responder SEMPRE em Português do Brasil (PT-BR).
+- **Documentação como Requisito**: Todo novo recurso ou mudança estrutural deve incluir a atualização/criação do arquivo em `docs/` como item de backlog obrigatório.
 - Todo critério de aceite deve ser verificável.
 
 # Activation
