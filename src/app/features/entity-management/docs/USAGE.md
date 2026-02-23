@@ -17,7 +17,7 @@ Para criar uma estrutura (ex: "Inventário"):
 
 ## 2. Configurando o Engine de Visualização
 
-Após definir a entidade, ela torna-se disponível globalmente no Dashboard:
+Após definir a entidade, ela torna-se disponível globalmente no Workspace:
 - **Filtro Automático**: Ao adicionar um widget de Filtro, selecione sua nova entidade. O sistema lerá os campos e criará os inputs de pesquisa automaticamente.
 - **Formulário Reativo**: O widget de Formulário gerará todos os campos de edição baseados no seu esquema, sem necessidade de escrever uma linha de HTML.
 

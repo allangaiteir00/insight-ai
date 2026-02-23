@@ -14,7 +14,8 @@ import { EntityEditorComponent } from './components/smart/entity-editor/entity-e
   template: `
     @if (isEditing()) {
       <app-entity-editor 
-        (onCancel)="isEditing.set(false)" 
+        [entityId]="selectedEntityId()"
+        (onCancel)="closeEditor()" 
         (onSave)="onEntitySaved()"
       />
     } @else {
@@ -30,7 +31,7 @@ import { EntityEditorComponent } from './components/smart/entity-editor/entity-e
         </div>
 
         <div class="actions">
-          <button class="btn-create" (click)="isEditing.set(true)">
+          <button class="btn-create" (click)="createEntity()">
             <span>+ Nova Entidade</span>
           </button>
         </div>
@@ -65,8 +66,8 @@ import { EntityEditorComponent } from './components/smart/entity-editor/entity-e
             </div>
 
             <div class="card-footer">
-              <button class="btn-action">Configurar Engine</button>
-              <button class="btn-action icon-only">⚙️</button>
+              <button class="btn-action" (click)="editEntity(entity.id)">Configurar Engine</button>
+              <button class="btn-action icon-only" (click)="editEntity(entity.id)">⚙️</button>
             </div>
           </div>
         }
@@ -74,7 +75,6 @@ import { EntityEditorComponent } from './components/smart/entity-editor/entity-e
     }
   `,
   styles: [`
-    /* ... existing styles untouched ... */
     .toolbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background: var(--color-surface-card); border-radius: var(--radius); border: 1px solid var(--color-border); margin-bottom: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); gap: 16px; }
 
     .dashboard-info {
@@ -116,27 +116,6 @@ import { EntityEditorComponent } from './components/smart/entity-editor/entity-e
       align-items: center;
       gap: 16px;
       flex-shrink: 0;
-    }
-
-    .btn-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--color-surface);
-      color: var(--color-text-secondary);
-      border: 1px solid var(--color-border);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-size: 1.1rem;
-    }
-    .btn-icon:hover {
-      background: var(--palette-50);
-      color: var(--palette-accent);
-      border-color: var(--palette-accent);
     }
 
     .btn-create {
@@ -218,6 +197,7 @@ import { EntityEditorComponent } from './components/smart/entity-editor/entity-e
     .dot.string { background: var(--color-primary); }
     .dot.select { background: #f59e0b; }
     .dot.date { background: #10b981; }
+    .dot.relation { background: #8b5cf6; }
 
     .card-footer { display: flex; gap: 10px; margin-top: auto; }
     .btn-action { 
@@ -240,9 +220,26 @@ import { EntityEditorComponent } from './components/smart/entity-editor/entity-e
 export class EntityManagementComponent {
   protected readonly entityRegistry = inject(EntityRegistryService);
   protected readonly store = inject(WorkspaceStore);
+
   protected readonly isEditing = signal(false);
+  protected readonly selectedEntityId = signal<string | null>(null);
+
+  protected createEntity() {
+    this.selectedEntityId.set(null);
+    this.isEditing.set(true);
+  }
+
+  protected editEntity(id: string) {
+    this.selectedEntityId.set(id);
+    this.isEditing.set(true);
+  }
+
+  protected closeEditor() {
+    this.isEditing.set(false);
+    this.selectedEntityId.set(null);
+  }
 
   protected onEntitySaved() {
-    this.isEditing.set(false);
+    this.closeEditor();
   }
 }
