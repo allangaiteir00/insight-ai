@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'design-tokens';
+
+/* Estilos de terceiros */
+@import 'gridstack/dist/gridstack.min.css';
+@import 'leaflet/dist/leaflet.css';
+
+/* Reset de base global */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: var(--font-family, 'Inter', system-ui, sans-serif);
+    // background: var(--color-surface, #ffffff);
+    /* Base dark background */
+}
+
+/* Forçar herança de fonte em elementos de formulário */
+input,
+select,
+textarea,
+button:not(.btn-primary):not(.btn-secondary) {
+    font-family: inherit;
+}
+
+
+/* Patch para remover fundos brancos residuais no calendário */
+
+/* Patch para remover fundos brancos residuais no calendário */
+.gantt-calendar-grid rect,
+.gantt-calendar-grid line {
+    stroke: rgba(255, 255, 255, 0.05) !important;
+}
