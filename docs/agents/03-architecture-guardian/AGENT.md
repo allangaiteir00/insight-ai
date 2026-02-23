@@ -41,12 +41,13 @@ src/features/[feature-name]/
 **[Regras de Dependência]**
 - [Regra de importação entre camadas + princípio SOLID que protege]
 
-**[Checklist SOLID]**
+**[Checklist SOLID & Docs]**
 - [ ] SRP: cada artefato tem 1 responsabilidade
 - [ ] OCP: extensão via composição, não modificação
 - [ ] LSP: subtipos preservam semântica do tipo base
 - [ ] ISP: interfaces granulares sem métodos não utilizados
 - [ ] DIP: dependências via abstrações/InjectionToken
+- [ ] DOCS: Pasta `docs/` contém `README.md`, `TECHNICAL.md`, `USAGE.md` e `VISUAL.md` (Obrigatório)
 
 **[Estratégia de Estado]**
 - [Local vs Global vs Feature Store — justificativa pelo SRP]
