@@ -8,6 +8,11 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'workspace/demo', pathMatch: 'full' },
             {
+                path: 'workspace',
+                redirectTo: 'workspace/demo',
+                pathMatch: 'full'
+            },
+            {
                 path: 'workspace/:workspaceId',
                 loadComponent: () => import('./features/workspace/workspace-container.component').then(m => m.WorkspaceContainerComponent)
             },
@@ -18,6 +23,19 @@ export const routes: Routes = [
             {
                 path: 'settings/theme',
                 loadComponent: () => import('./features/theme/theme-page.component').then(m => m.ThemePageComponent)
+            },
+            {
+                path: 'users',
+                loadComponent: () => import('./shared/components/coming-soon/coming-soon.component').then(m => m.ComingSoonComponent)
+            },
+            {
+                path: 'settings',
+                loadComponent: () => import('./shared/components/coming-soon/coming-soon.component').then(m => m.ComingSoonComponent)
+            },
+            {
+                path: 'theme',
+                redirectTo: 'settings/theme',
+                pathMatch: 'full'
             }
         ]
     }
