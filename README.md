@@ -1,59 +1,76 @@
-# InsightAi
+# Insight AI - Enterprise Intelligence Platform 💎🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+[![Angular](https://img.shields.io/badge/Angular-19+-DD0031?style=for-the-badge&logo=angular)](https://angular.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind--CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## Development server
+O **Insight AI** é uma plataforma de inteligência empresarial de próxima geração, projetada para transformar dados brutos em decisões estratégicas através de um ecossistema de **Agentes de IA** e um motor de visualização **High-Fidelity**.
 
-To start a local development server, run:
+---
+
+## � Design & Experience (High-Fidelity)
+
+O projeto foca em uma estética ultra-premium, inspirada em ferramentas como Bryntum e Linear, utilizando o estado da arte do **Angular 19+**.
+
+### 💎 Insight Gantt Engine
+*   **WBS & Hierarchy**: Árvore analítica real com expand/collapse.
+*   **Dependency Arrows**: Renderização SVG de setas ("elbow connectors") entre tarefas.
+*   **Multi-Tier Timeline**: Cabeçalhos temporais de múltiplos níveis (Mês/Semana/Dia).
+*   **Project Markers**: Linhas de status dinâmicas para "Hoje" e marcos críticos.
+
+### � Theme Engine v2
+*   **Dynamic Glassmorphism**: Transparências e blurs controlados dinamicamente.
+*   **Layered Backgrounds**: Suporte a texturas, gradientes e partículas simultâneos.
+*   **Semantic Tokens**: Sistema de cores 100% mapeado para design tokens modernos.
+
+---
+
+## 🏗️ Core Architecture
+
+### 🧠 Ecossistema de Agentes
+Desenvolvido por agentes especializados que garantem a integridade do código:
+- **Orchestrator**: Coordenação de fluxo e ativação de skills.
+- **Architecture Guardian**: Defesa dos princípios **SOLID** e **Clean Code**.
+- **Angular Component Agent**: Implementação de reatividade granular via **Signals**.
+
+### ⚙️ Engine Metadata-Driven
+- **Entity Registry**: Desacoplamento total entre as entidades de negócio e os widgets.
+- **Interaction Bus**: Comunicação entre widgets para cross-filtering e master-detail.
+- **Universal Widgets**: Dashboard expansível com Kanban, Mapas, Calendários e Metrics.
+
+---
+
+## �️ Tech Stack & Standards
+
+- **Core**: Angular 19+ (Standalone, Signals, New Control Flow)
+- **Styling**: Tailwind CSS v4 + Native CSS Variables
+- **Layout**: GridStack.js (Gravity-based grid engine)
+- **Visualização**: Apache ECharts + SVG Custom Engines
+- **Qualidade**: Vitest & Playwright
+
+---
+
+## 🚀 Vision & Next Steps
+
+1.  **Natural Language Dashboarding**: Geração de telas completas via prompts ("Crie um resumo de custos").
+2.  **Relacionamentos N-N**: Suporte nativo a conexões complexas na modelagem metadata-driven.
+3.  **Real-Time Collaboration**: Sincronização de workspaces via WebSockets.
+4.  **AI Insights Engine**: Detecção automática de anomalias nos dados via agentes analíticos.
+
+---
+
+## 🏁 Como Rodar
 
 ```bash
-ng serve
+# 1. Instalar dependências
+npm install
+
+# 2. Iniciar servidor de desenvolvimento
+npm start
+
+# 3. Executar testes
+npm test
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+**Insight AI — Transformando dados em decisões através de design e inteligência.** 🚀💎🏆
