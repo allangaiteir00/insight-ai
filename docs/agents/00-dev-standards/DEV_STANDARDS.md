@@ -138,21 +138,34 @@ Use este checklist ao criar ou revisar qualquer artefato:
 
 ---
 
-## 📚 Padrão de Documentação de Feature
+## 📚 Padrão de Documentação de Feature (Robust Standard)
 
-Toda feature em `src/app/features/` deve ser auto-documentada para garantir a manutenibilidade por humanos e IAs.
+Toda feature em `src/app/features/` deve ser auto-documentada seguindo o padrão robusto para garantir manutenibilidade e clareza para IAs e desenvolvedores humanos. O idioma obrigatório é **Português (Brasil)**.
 
 ### Estrutura da Pasta `docs/`
-Cada feature deve conter obrigatoriamente uma pasta `docs/` com um arquivo principal (ex: `FEATURE.md`).
+Cada feature deve conter obrigatoriamente uma pasta `docs/` com os seguintes arquivos:
 
-### Conteúdo Requerido
-1. **Conceito/Propósito**: O que a feature resolve.
-2. **Catálogo de Recursos**: Mapeamento de Services, Components e Models.
-3. **Guia de Uso**: Como interagir ou consumir a feature.
-4. **Diagramas Mermaid**:
-   - **Uso**: Fluxo de interação (Sequence Diagram).
-   - **Conceitual**: Estrutura lógica ou fluxo de dados (Graph/Class).
+1.  **`README.md` (Índice Central)**:
+    - Visão geral da feature.
+    - Status de implementação.
+    - Índice para os outros arquivos de documentação.
+
+2.  **`TECHNICAL.md` (Detalhamento Técnico)**:
+    - Arquitetura detalhada (Macro ao Micro).
+    - Decisões de design e trade-offs.
+    - Mapeamento de Services, Components (Smart/Dumb), Stores e Models.
+    - Dependências e integrações.
+
+3.  **`USAGE.md` (Guia de Uso)**:
+    - Como consumir a feature.
+    - Exemplos de código (inputs, outputs, eventos).
+    - Configurações e flags de feature.
+
+4.  **`VISUAL.md` (Representação Visual)**:
+    - Diagramas Mermaid (Sequence, Flowchart, Class).
+    - Fluxogramas de processos complexos.
 
 ### Ciclo de Vida
-- **Criação**: Feature só é "Done" com `docs/` completo.
-- **Manutenção**: Alterações de lógica exigem atualização imediata da documentação.
+- **Criação**: Feature só é consolidada ("Done") com o kit de `docs/` completo.
+- **Manutenção**: Qualquer alteração de contrato ou lógica exige atualização imediata dos 4 arquivos.
+- **Veredito**: O `Architecture Guardian` rejeitará qualquer PR que não atenda a este padrão.
