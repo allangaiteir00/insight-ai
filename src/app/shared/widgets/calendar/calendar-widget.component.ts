@@ -4,7 +4,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { WidgetConfig } from '../../../core/models/dashboard.model';
+import { WidgetConfig } from '../../../core/models/workspace.model';
 import { EntityDefinition } from '../../../core/page-engine/models/entity.model';
 
 @Component({

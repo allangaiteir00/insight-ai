@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
-import { Widget } from '../../../core/models/dashboard.model';
+import { Widget } from '../../../core/models/workspace.model';
 import { EntityDefinition } from '../../../core/page-engine/models/entity.model';
 import { EntityDataService } from '../../../core/page-engine/services/entity-data.service';
 
 @Component({
-    selector: 'app-metric-widget',
-    standalone: true,
-    imports: [CommonModule],
-    template: `
+  selector: 'app-metric-widget',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
     <div class="metric-container" [class.no-data]="!value()">
       <div class="metric-content">
         <span class="metric-label">{{ config().title }}</span>
@@ -30,7 +30,7 @@ import { EntityDataService } from '../../../core/page-engine/services/entity-dat
       </div>
     </div>
   `,
-    styles: [`
+  styles: [`
     :host { display: block; height: 100%; }
     .metric-container {
       height: 100%;
@@ -116,62 +116,62 @@ import { EntityDataService } from '../../../core/page-engine/services/entity-dat
 
     .no-data .metric-value { color: var(--color-text-muted); font-size: 1.5rem; }
   `],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MetricWidgetComponent {
-    config = input.required<Widget['config']>();
-    entity = input<EntityDefinition | null>(null);
-    data = input<any>(null);
+  config = input.required<Widget['config']>();
+  entity = input<EntityDefinition | null>(null);
+  data = input<any>(null);
 
-    private readonly dataService = inject(EntityDataService);
-    protected readonly Math = Math;
+  private readonly dataService = inject(EntityDataService);
+  protected readonly Math = Math;
 
-    protected readonly value = computed(() => {
-        const mappings = this.config().mappings;
-        const entityId = this.entity()?.id;
+  protected readonly value = computed(() => {
+    const mappings = this.config().mappings;
+    const entityId = this.entity()?.id;
 
-        if (entityId) {
-            const records = this.dataService.getRecords(entityId)();
-            if (records.length === 0) return null;
-            // Se houver mapeamento de valor, usa ele. Se não, usa a data do primeiro registro.
-            return mappings?.['value'] ? records[0].data[mappings['value']] : records[0].data;
-        }
+    if (entityId) {
+      const records = this.dataService.getRecords(entityId)();
+      if (records.length === 0) return null;
+      // Se houver mapeamento de valor, usa ele. Se não, usa a data do primeiro registro.
+      return mappings?.['value'] ? records[0].data[mappings['value']] : records[0].data;
+    }
 
-        // Se não for entidade, usa o dado externo passado (.data)
-        const d = this.data();
-        if (!d) return null;
+    // Se não for entidade, usa o dado externo passado (.data)
+    const d = this.data();
+    if (!d) return null;
 
-        if (mappings?.['value'] && typeof d === 'object') {
-            return d[mappings['value']];
-        }
+    if (mappings?.['value'] && typeof d === 'object') {
+      return d[mappings['value']];
+    }
 
-        return (typeof d === 'number' || typeof d === 'string') ? d : null;
-    });
+    return (typeof d === 'number' || typeof d === 'string') ? d : null;
+  });
 
-    protected readonly trend = computed(() => {
-        // Stub para tendência. Em um caso real, compararia records[0] com records[1]
-        return 12.5;
-    });
+  protected readonly trend = computed(() => {
+    // Stub para tendência. Em um caso real, compararia records[0] com records[1]
+    return 12.5;
+  });
 
-    protected readonly displayValue = computed(() => {
-        const val = this.value();
+  protected readonly displayValue = computed(() => {
+    const val = this.value();
 
-        // Se estiver em modo preview/sem valor, mostra um valor mock "bonito"
-        if (val === null || val === undefined) {
-            return '10.450';
-        }
+    // Se estiver em modo preview/sem valor, mostra um valor mock "bonito"
+    if (val === null || val === undefined) {
+      return '10.450';
+    }
 
-        if (typeof val === 'number') {
-            return new Intl.NumberFormat('pt-BR', {
-                maximumFractionDigits: 2,
-                notation: Math.abs(val) > 999999 ? 'compact' : 'standard'
-            }).format(val);
-        }
+    if (typeof val === 'number') {
+      return new Intl.NumberFormat('pt-BR', {
+        maximumFractionDigits: 2,
+        notation: Math.abs(val) > 999999 ? 'compact' : 'standard'
+      }).format(val);
+    }
 
-        if (val && typeof val === 'object') {
-            return '---';
-        }
+    if (val && typeof val === 'object') {
+      return '---';
+    }
 
-        return String(val);
-    });
+    return String(val);
+  });
 }

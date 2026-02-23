@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Widget } from '../../../core/models/dashboard.model';
+import { Widget } from '../../../core/models/workspace.model';
 import { EntityDefinition } from '../../../core/page-engine/models/entity.model';
 import { PageInteractionService } from '../../../core/page-engine/services/page-interaction.service';
 
 @Component({
-    selector: 'app-filter-widget',
-    standalone: true,
-    imports: [CommonModule, FormsModule],
-    template: `
+  selector: 'app-filter-widget',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  template: `
     <div class="filter-container">
       <div class="filter-header">
          <span class="filter-label">{{ config().title }}</span>
@@ -25,7 +25,7 @@ import { PageInteractionService } from '../../../core/page-engine/services/page-
       </div>
     </div>
   `,
-    styles: [`
+  styles: [`
     .filter-container {
       padding: 16px;
       height: 100%;
@@ -58,33 +58,33 @@ import { PageInteractionService } from '../../../core/page-engine/services/page-
       border-color: var(--color-primary);
     }
   `],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterWidgetComponent {
-    config = input.required<Widget['config']>();
-    entity = input<EntityDefinition | null>(null);
+  config = input.required<Widget['config']>();
+  entity = input<EntityDefinition | null>(null);
 
-    private readonly interactionService = inject(PageInteractionService);
+  private readonly interactionService = inject(PageInteractionService);
 
-    protected selectedValue: any = null;
+  protected selectedValue: any = null;
 
-    protected options = computed(() => {
-        // Para simplificar, usamos as opções do primeiro campo 'select' da entidade se disponível
-        const entity = this.entity();
-        if (!entity) return [];
+  protected options = computed(() => {
+    // Para simplificar, usamos as opções do primeiro campo 'select' da entidade se disponível
+    const entity = this.entity();
+    if (!entity) return [];
 
-        const filterField = entity.fields.find(f => f.type === 'select');
-        return filterField?.options || [];
-    });
+    const filterField = entity.fields.find(f => f.type === 'select');
+    return filterField?.options || [];
+  });
 
-    onFilterChange() {
-        const fieldKey = this.entity()?.fields.find(f => f.type === 'select')?.key || 'filter';
-        const payload = this.selectedValue ? { [fieldKey]: this.selectedValue } : {};
+  onFilterChange() {
+    const fieldKey = this.entity()?.fields.find(f => f.type === 'select')?.key || 'filter';
+    const payload = this.selectedValue ? { [fieldKey]: this.selectedValue } : {};
 
-        this.interactionService.applyFilter(
-            'filter-widget',
-            payload,
-            this.entity()?.id
-        );
-    }
+    this.interactionService.applyFilter(
+      'filter-widget',
+      payload,
+      this.entity()?.id
+    );
+  }
 }

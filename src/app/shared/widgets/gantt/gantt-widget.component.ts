@@ -1,7 +1,7 @@
 // Enterprise Gantt Widget
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
-import { WidgetConfig } from '../../../core/models/dashboard.model';
+import { WidgetConfig } from '../../../core/models/workspace.model';
 import { EntityDefinition } from '../../../core/page-engine/models/entity.model';
 import { GanttColumn, GanttMarker, GanttViewScale, InsightGanttItem } from './engine/gantt-models';
 import { InsightGanttComponent } from './engine/insight-gantt.component';

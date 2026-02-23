@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
-import { Widget } from '../../../core/models/dashboard.model';
+import { Widget } from '../../../core/models/workspace.model';
 import { EntityDefinition, EntityField } from '../../../core/page-engine/models/entity.model';
 import { EntityDataService } from '../../../core/page-engine/services/entity-data.service';
 import { PageInteractionService } from '../../../core/page-engine/services/page-interaction.service';

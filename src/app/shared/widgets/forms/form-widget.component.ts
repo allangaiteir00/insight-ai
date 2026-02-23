@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Widget } from '../../../core/models/dashboard.model';
+import { Widget } from '../../../core/models/workspace.model';
 import { EntityDefinition } from '../../../core/page-engine/models/entity.model';
 import { EntityDataService } from '../../../core/page-engine/services/entity-data.service';
 import { PageInteractionService } from '../../../core/page-engine/services/page-interaction.service';

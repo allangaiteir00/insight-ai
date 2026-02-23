@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, ViewChild, effect, input } from '@angular/core';
 import * as L from 'leaflet';
-import { WidgetConfig } from '../../../core/models/dashboard.model';
+import { WidgetConfig } from '../../../core/models/workspace.model';
 import { EntityDefinition } from '../../../core/page-engine/models/entity.model';
 
 @Component({

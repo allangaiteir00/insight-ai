@@ -4,7 +4,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
-import { Widget } from '../../../core/models/dashboard.model';
+import { Widget } from '../../../core/models/workspace.model';
 import { EntityDefinition, EntityField, EntityRecord } from '../../../core/page-engine/models/entity.model';
 import { EntityDataService } from '../../../core/page-engine/services/entity-data.service';
 import { PageInteractionService } from '../../../core/page-engine/services/page-interaction.service';
