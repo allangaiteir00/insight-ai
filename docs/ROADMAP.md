@@ -6,7 +6,14 @@ Este documento detalha o plano de expansão do Insight AI, focando em inteligên
 
 ## 🚀 Próximas Implementações
 
-### 1. Evolução da Persistência (Data Persistence)
+### 1. Fundações de IAM & Multi-tenancy (Identity)
+- **O que agrega**: Segurança, auditoria e isolamento de dados. Sem isso, o sistema não pode ser multi-usuário ou multi-empresa.
+- **O que vamos implementar**: Entidades base (`Users`, `Roles`, `Groups`, `Tenants`) e o motor de permissões (ACL/RBAC).
+- **Quem sugeriu**: Usuário
+- **Issue**: Pendente
+- **Agente Alvo**: `Domain Modeling Agent`
+
+### 2. Evolução da Persistência (Data Persistence)
 - **O que agrega**: Estabilidade e integridade dos dados, saindo de mocks para operação real.
 - **O que vamos implementar**: Integração real com API ou camada persistente local robusta (IndexedDB).
 - **Quem sugeriu**: IA (Antigravity)
