@@ -1,6 +1,9 @@
 # AI Angular Software Factory — Sistema de Agentes
 
-Ecossistema autônomo de 15 agentes especializados para desenvolvimento Angular 19+ com Standalone, Signals e Feature-Sliced Architecture.
+Ecossistema autônomo de 15 agentes especializados para desenvolvimento Angular 19+ com Standalone, Signals e Feature-Sliced Architecture — guiados por **Clean Code**, **SOLID** e **Componentização** como padrões de desenvolvimento inegociáveis.
+
+> 📏 Todos os agentes seguem os padrões definidos em [`00-dev-standards/DEV_STANDARDS.md`](00-dev-standards/DEV_STANDARDS.md).
+
 
 ---
 
@@ -43,6 +46,18 @@ Ecossistema autônomo de 15 agentes especializados para desenvolvimento Angular 
 
 ---
 
+## 📏 Padrões de Desenvolvimento
+
+Todos os agentes referenciam e aplicam os padrões centralizados em [`DEV_STANDARDS.md`](00-dev-standards/DEV_STANDARDS.md).
+
+| Padrão | Princípios | Agentes que Aplicam |
+|---|---|---|
+| **Clean Code** | Nomenclatura expressiva, funções ≤20 linhas, sem magic numbers, sem lógica em templates | Todos |
+| **SOLID** | SRP, OCP, LSP, ISP, DIP aplicados a componentes, services, stores e interfaces | 02, 03, 04, 05, 06, 08, 11, 12 |
+| **Componentização** | Smart/Dumb, props drilling ≤2 níveis, extração de sub-componentes > 150 linhas | 03, 04, 08, 12 |
+
+---
+
 ## 🔄 Sequência de Ativação Obrigatória
 
 ```mermaid
@@ -79,6 +94,9 @@ graph TD
 | **Reatividade** | Angular Signals |
 | **Estilo** | SCSS + BEM |
 | **Estrutura** | Feature-Sliced Design |
+| **Clean Code** | Funções ≤20 linhas, nomes expressivos, sem magic numbers |
+| **SOLID** | SRP, OCP, LSP, ISP, DIP — obrigatórios em todos os artefatos |
+| **Componentização** | Smart/Dumb, extração de sub-componentes, props drilling ≤2 níveis |
 | **Idioma** | Português (Brasil) |
 
 ---
