@@ -1,6 +1,6 @@
 export type WidgetType = 'chart-line' | 'chart-bar' | 'chart-bar-horizontal' | 'chart-pie' | 'chart-area' | 'chart-heatmap' | 'chart-boxplot' | 'chart-mixed' | 'metric' | 'table' | 'text' | 'form' | 'kanban' | 'list' | 'action-button' | 'entity-card' | 'filter' | 'gantt' | 'map' | 'calendar';
 
-export type DashboardPalette = 'indigo' | 'violet' | 'sky' | 'emerald' | 'rose';
+export type WorkspacePalette = 'indigo' | 'violet' | 'sky' | 'emerald' | 'rose';
 
 export type WidgetState = 'normal' | 'mock' | 'error';
 
@@ -38,7 +38,7 @@ export interface Filter {
     value?: any;
 }
 
-export interface DashboardVersion {
+export interface WorkspaceVersion {
     readonly id: string;
     readonly dashboardId: string;
     versionNumber: number;
@@ -46,10 +46,10 @@ export interface DashboardVersion {
     filters: Filter[];
     isActive: boolean;
     createdAt: string;
-    palette?: DashboardPalette;
+    palette?: WorkspacePalette;
 }
 
-export interface Dashboard {
+export interface Workspace {
     readonly id: string;
     readonly tenantId: string;
     name: string;

@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import { GridStack } from 'gridstack';
 import 'gridstack/dist/gridstack.min.css';
-import { Widget, WidgetType } from '../../core/models/dashboard.model';
+import { Widget, WidgetType } from '../../core/models/workspace.model';
 import { ThemeService } from '../../core/services/theme.service';
 import { EditorToolbarComponent } from './components/editor-toolbar/editor-toolbar.component';
 import { WidgetDisplayComponent } from './components/widget-display/widget-display.component';
@@ -203,7 +203,7 @@ export class WorkspaceContainerComponent implements OnInit, AfterViewInit, OnDes
   }
 
   ngOnInit(): void {
-    this.store.loadDashboard(this.workspaceId());
+    this.store.loadWorkspace(this.workspaceId());
   }
 
   ngAfterViewInit(): void {

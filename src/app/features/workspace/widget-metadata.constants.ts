@@ -20,7 +20,7 @@ import {
     lucideTrendingUp,
     lucideUserSquare2
 } from '@ng-icons/lucide';
-import { WidgetType } from '../../core/models/dashboard.model';
+import { WidgetType } from '../../core/models/workspace.model';
 
 export interface WidgetMeta {
     type: WidgetType;

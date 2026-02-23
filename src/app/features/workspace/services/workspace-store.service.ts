@@ -1,22 +1,22 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { Dashboard, DashboardVersion, Widget, WidgetConfig } from '../../../core/models/dashboard.model';
-import { DashboardApiService } from '../../../core/services/dashboard-api.service';
+import { Widget, WidgetConfig, Workspace, WorkspaceVersion } from '../../../core/models/workspace.model';
+import { WorkspaceApiService } from '../../../core/services/workspace-api.service';
 
 @Injectable({ providedIn: 'root' })
 export class WorkspaceStore {
-    private readonly api = inject(DashboardApiService);
+    private readonly api = inject(WorkspaceApiService);
 
     // Private State
-    private readonly _dashboard = signal<Dashboard | null>(null);
-    private readonly _activeVersion = signal<DashboardVersion | null>(null);
+    private readonly _workspace = signal<Workspace | null>(null);
+    private readonly _activeVersion = signal<WorkspaceVersion | null>(null);
     private readonly _mode = signal<'viewer' | 'editor'>('viewer');
     private readonly _editingWidget = signal<Widget | null>(null);
     private readonly _loading = signal<boolean>(false);
     private readonly _error = signal<string | null>(null);
 
     // Public Computed State
-    readonly dashboard = computed(() => this._dashboard());
+    readonly workspace = computed(() => this._workspace());
     readonly activeVersion = computed(() => this._activeVersion());
     readonly widgets = computed(() => this._activeVersion()?.widgets ?? []);
     readonly filters = computed(() => this._activeVersion()?.filters ?? []);
@@ -26,19 +26,19 @@ export class WorkspaceStore {
     readonly errorMessage = computed(() => this._error());
 
     // Actions
-    async loadDashboard(dashboardId: string): Promise<void> {
+    async loadWorkspace(workspaceId: string): Promise<void> {
         this._loading.set(true);
         this._error.set(null);
         try {
-            const versions = await firstValueFrom(this.api.getVersions(dashboardId));
+            const versions = await firstValueFrom(this.api.getVersions(workspaceId));
             const activeVersion = versions.find(v => v.isActive) ?? versions[0];
             this._activeVersion.set(activeVersion);
-            this._dashboard.set({ id: dashboardId, name: `Workspace ${dashboardId}`, tenantId: 'local' });
+            this._workspace.set({ id: workspaceId, name: `Workspace ${workspaceId}`, tenantId: 'local' });
         } catch {
             // Backend indisponível: inicializa modo local sem propagar erro ao usuário final
             this._error.set(null);
-            this._activeVersion.set(this.buildLocalVersion(dashboardId));
-            this._dashboard.set({ id: dashboardId, name: 'Workspace Local', tenantId: 'local' });
+            this._activeVersion.set(this.buildLocalVersion(workspaceId));
+            this._workspace.set({ id: workspaceId, name: 'Workspace Local', tenantId: 'local' });
         } finally {
             this._loading.set(false);
         }
@@ -76,7 +76,7 @@ export class WorkspaceStore {
     }
 
     addWidget(widget: Widget): void {
-        const version = this._activeVersion() ?? this.buildLocalVersion(this._dashboard()?.id ?? 'local');
+        const version = this._activeVersion() ?? this.buildLocalVersion(this._workspace()?.id ?? 'local');
         this._activeVersion.set({ ...version, widgets: [...version.widgets, widget] });
     }
 
@@ -90,13 +90,13 @@ export class WorkspaceStore {
     }
 
     async saveCurrentVersion(): Promise<void> {
-        const dashboard = this._dashboard();
+        const workspace = this._workspace();
         const version = this._activeVersion();
-        if (!dashboard || !version) return;
+        if (!workspace || !version) return;
 
         this._loading.set(true);
         try {
-            await firstValueFrom(this.api.createVersion(dashboard.id, version));
+            await firstValueFrom(this.api.createVersion(workspace.id, version));
         } catch {
             this._error.set('Falha ao salvar versão. Tente novamente.');
         } finally {
@@ -104,10 +104,10 @@ export class WorkspaceStore {
         }
     }
 
-    private buildLocalVersion(dashboardId: string): DashboardVersion {
+    private buildLocalVersion(workspaceId: string): WorkspaceVersion {
         return {
             id: 'v-local',
-            dashboardId,
+            dashboardId: workspaceId,
             versionNumber: 1,
             isActive: true,
             widgets: [],

@@ -13,7 +13,7 @@ A peça central é o `WorkspaceContainerComponent`, que gerencia o ciclo de vida
 ### 1.2 Gestão de Estado (Store & Signals)
 O `WorkspaceStore` (`services/workspace-store.service.ts`) isola a lógica de negócio da visualização:
 - **Signals Reativos**: Mantém `_activeVersion`, `_mode` (viewer/editor) e `_editingWidget` como signals privados.
-- **Versionamento Híbrido**: O método `loadDashboard` tenta buscar versões do backend via `DashboardApiService`. Em caso de falha de rede, o sistema entra em modo **Local Persistence Fallback**, gerando uma versão `v-local` estável para não interromper a UX.
+- **Versionamento Híbrido**: O método `loadWorkspace` tenta buscar versões do backend via `WorkspaceApiService`. Em caso de falha de rede, o sistema entra em modo **Local Persistence Fallback**, gerando uma versão `v-local` estável para não interromper a UX.
 - **Imutabilidade**: Todas as mutações de lista de widgets utilizam spread operators para garantir que os Signals propaguem as mudanças corretamente através da árvore de componentes.
 
 ---
@@ -61,7 +61,7 @@ Motor baseado em **ECharts** com integração profunda de Design Tokens:
 ## 4. Fluxo de Extensibilidade (Novos Widgets)
 
 Para adicionar um novo widget, o desenvolvedor deve seguir o protocolo de 4 passos:
-1.  **Modelo**: Adicionar o novo tipo em `WidgetType` (`dashboard.model.ts`).
+1.  **Modelo**: Adicionar o novo tipo em `WidgetType` (`workspace.model.ts`).
 2.  **Metadados**: Registrar ícone, categoria e labels em `widget-metadata.constants.ts`.
 3.  **Implementação**: Criar o componente em `shared/widgets/` aceitando os inputs padrão (`config`, `entity`, `data`).
 4.  **Dispatcher**: Registrar o novo caso no `@switch` do `EntityWidgetComponent`.

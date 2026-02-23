@@ -1,27 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Dashboard, DashboardVersion } from '../models/dashboard.model';
+import { Workspace, WorkspaceVersion } from '../models/workspace.model';
 
 @Injectable({ providedIn: 'root' })
-export class DashboardApiService {
+export class WorkspaceApiService {
     private readonly http = inject(HttpClient);
-    private readonly apiUrl = '/api/dashboards';
+    private readonly apiUrl = '/api/workspaces';
 
-    getDashboards(): Observable<Dashboard[]> {
-        return this.http.get<Dashboard[]>(this.apiUrl);
+    getWorkspaces(): Observable<Workspace[]> {
+        return this.http.get<Workspace[]>(this.apiUrl);
     }
 
-    getVersions(dashboardId: string): Observable<DashboardVersion[]> {
-        return this.http.get<DashboardVersion[]>(`${this.apiUrl}/${dashboardId}/versions`);
+    getVersions(dashboardId: string): Observable<WorkspaceVersion[]> {
+        return this.http.get<WorkspaceVersion[]>(`${this.apiUrl}/${dashboardId}/versions`);
     }
 
-    createVersion(dashboardId: string, version: Partial<DashboardVersion>): Observable<DashboardVersion> {
-        return this.http.post<DashboardVersion>(`${this.apiUrl}/${dashboardId}/versions`, version);
+    createVersion(dashboardId: string, version: Partial<WorkspaceVersion>): Observable<WorkspaceVersion> {
+        return this.http.post<WorkspaceVersion>(`${this.apiUrl}/${dashboardId}/versions`, version);
     }
 
-    publishVersion(dashboardId: string, versionId: string): Observable<Dashboard> {
-        return this.http.put<Dashboard>(`${this.apiUrl}/${dashboardId}/publish/${versionId}`, {});
+    publishVersion(dashboardId: string, versionId: string): Observable<Workspace> {
+        return this.http.put<Workspace>(`${this.apiUrl}/${dashboardId}/publish/${versionId}`, {});
     }
 
     getWidgetData(url: string, filters: any): Observable<any> {
