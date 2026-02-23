@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, EventEmitter, inject, input, Output, untracked } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EntityDefinition, EntityFieldType } from '../../../../../core/page-engine/models/entity.model';
 import { EntityRegistryService } from '../../../../../core/page-engine/services/entity-registry.service';
@@ -12,8 +12,8 @@ import { EntityRegistryService } from '../../../../../core/page-engine/services/
     <div class="editor-container">
       <div class="editor-header">
         <div class="header-titles">
-          <h2>Nova Entidade</h2>
-          <p>Defina os metadados e os campos da sua nova entidade de negócio.</p>
+          <h2>{{ entityId() ? 'Editar Entidade' : 'Nova Entidade' }}</h2>
+          <p>{{ entityId() ? 'Configure os metadados e campos da sua entidade existente.' : 'Defina os metadados e os campos da sua nova entidade de negócio.' }}</p>
         </div>
         <div class="header-actions">
           <button class="btn-secondary" (click)="cancel()">Cancelar</button>
@@ -28,7 +28,7 @@ import { EntityRegistryService } from '../../../../../core/page-engine/services/
           <div class="form-row">
             <div class="form-group flex-2">
               <label>Nome do Sistema (ID)</label>
-              <input type="text" formControlName="id" placeholder="ex: leads_vendas" class="form-control">
+              <input type="text" formControlName="id" placeholder="ex: leads_vendas" class="form-control" [readOnly]="!!entityId()">
               <span class="hint">Usado internamente. Sem espaços ou caracteres especiais.</span>
             </div>
             
@@ -80,6 +80,7 @@ import { EntityRegistryService } from '../../../../../core/page-engine/services/
                       <option value="date">Data & Hora</option>
                       <option value="select">Lista de Seleção</option>
                       <option value="boolean">Verdadeiro/Falso</option>
+                      <option value="relation">Relacionamento</option>
                     </select>
                   </div>
 
@@ -291,6 +292,8 @@ export class EntityEditorComponent {
   @Output() onCancel = new EventEmitter<void>();
   @Output() onSave = new EventEmitter<EntityDefinition>();
 
+  entityId = input<string | null>(null);
+
   private readonly fb = inject(FormBuilder);
   protected readonly registry = inject(EntityRegistryService);
 
@@ -312,7 +315,54 @@ export class EntityEditorComponent {
   }
 
   constructor() {
-    this.addField(); // Start with at least one field
+    effect(() => {
+      const id = this.entityId();
+      untracked(() => {
+        if (id) {
+          this.loadEntity(id);
+        } else {
+          // Reset form for "New Entity" mode
+          this.form.reset({ id: '', name: '', label: '', url: '' });
+          this.fields.clear();
+          this.relations.clear();
+          this.addField();
+        }
+      });
+    });
+  }
+
+  private loadEntity(id: string) {
+    const entity = this.registry.getEntity(id);
+    if (!entity) return;
+
+    this.form.patchValue({
+      id: entity.id,
+      name: entity.name,
+      label: entity.label,
+      url: entity.url || ''
+    });
+
+    this.fields.clear();
+    entity.fields.forEach(f => {
+      const group = this.fb.group({
+        key: [f.key, [Validators.required, Validators.pattern(/^[a-zA-Z0-9_]+$/)]],
+        label: [f.label, Validators.required],
+        type: [f.type, Validators.required],
+        required: [f.required || false]
+      });
+      this.fields.push(group);
+    });
+
+    this.relations.clear();
+    entity.relations?.forEach(r => {
+      const group = this.fb.group({
+        fromEntityId: [r.fromEntityId],
+        toEntityId: [r.toEntityId, Validators.required],
+        type: [r.type, Validators.required],
+        foreignKey: [r.foreignKey, Validators.required]
+      });
+      this.relations.push(group);
+    });
   }
 
   addField() {
@@ -349,9 +399,7 @@ export class EntityEditorComponent {
 
   save() {
     if (this.form.invalid) return;
-
     const value = this.form.value;
-
     const newEntity: EntityDefinition = {
       id: value.id as string,
       name: value.name as string,
@@ -365,7 +413,6 @@ export class EntityEditorComponent {
         { id: 'delete', label: 'Excluir', type: 'delete' }
       ]
     };
-
     this.registry.registerEntity(newEntity);
     this.onSave.emit(newEntity);
   }
